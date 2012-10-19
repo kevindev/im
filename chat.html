@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="ui/master.css"/>
+
+    <script type="text/javascript" src="ui/libs/require.js"></script>
+    <script type="text/javascript" src="ui/master.js"></script>
+</head>
+<body class="chat" control="widgets/chat/control">
+<div class="chat__body"></div>
+<form class="chat__form">
+    <div class="inputText chat__input" style="width: 150px; margin-bottom: 5px;">
+        <input name="username" type="text" placeholder="username" value="username"/>
+    </div>
+    <span class="chat__sendButton button">Send<input type="submit"/></span>
+
+    <div class="inputText chat__input chat__input_message">
+        <input name="text" type="text" placeholder="message"/>
+    </div>
+</form>
+
+<script type="text/ejs" id="messageTemplate">
+    <div class="chat__message">
+        <div class="chat__messageAuthor"><%= username %>:</div>
+        <div class="chat__messageText"><%= text %></div>
+    </div>
+</script>
+
+</body>
+</html>

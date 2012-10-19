@@ -1,0 +1,8 @@
+@import "default.css";
+
+@import "blocks/button/button.css";
+
+@import "blocks/inputText/inputText.css";
+
+@import "blocks/desktop/style.css";
+@import "widgets/chat/style.css";

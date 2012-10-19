@@ -1,0 +1,6 @@
+.desktop__window{
+    width: 400px;
+    height: 600px;
+    margin: 0 10px;
+    border: 4px solid #ccc;
+}

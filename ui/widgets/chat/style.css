@@ -1,0 +1,46 @@
+.chat__body {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 93px;
+    overflow: auto;
+}
+
+.chat__form {
+    background: #f4f4f4;
+    padding: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-top: 1px solid #ccc;
+}
+
+.chat__sendButton {
+    float: right;
+    margin: 5px 0 0 0;
+}
+
+.chat__input_message {
+    overflow: hidden;
+    padding: 5px;
+    position: relative;
+    left: -5px;
+    margin-bottom: -5px;
+}
+
+.chat__message {
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+}
+
+.chat__messageAuthor {
+    font-weight: bold;
+    padding-bottom: 4px;
+}
+
+.chat__input_invalid input{
+    border-color: #d40000 !important;
+    box-shadow: 0 0 3px #d40000 !important;
+}
