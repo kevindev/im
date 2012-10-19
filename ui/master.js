@@ -1,4 +1,10 @@
-top.sessionStorage.messages = '[]';
+if (top.sessionStorage){
+    top.sessionStorage.messages = '[]';
+} else {
+    top.sessionStorage = {
+        messages : '[]'
+    }
+}
 
 require.config({
     baseUrl: 'ui/',

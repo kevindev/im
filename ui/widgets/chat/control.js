@@ -38,7 +38,8 @@ define(
             });
 
             $(top).on('message', function(e) {
-                var data = e.originalEvent.data;
+
+                var data = JSON.parse(e.originalEvent.data);
 
                 switch (data.channel) {
                     case 'messages':
@@ -63,16 +64,16 @@ define(
 
                 top.sessionStorage.messages = JSON.stringify(messages);
 
-                top.postMessage({
+                top.postMessage(JSON.stringify({
                     channel: 'messages',
                     action: 'add',
                     message: message
-                }, document.location.protocol + '//' + document.location.host);
+                }), document.location.protocol + '//' + document.location.host);
 
             },
             renderMessage: function(message) {
                 var control = this;
-                control.$body.append(utils.template($('#messageTemplate').html(), message));
+                control.$body.append(_.template($('#messageTemplate').html(), message));
             },
             showErrors: function(errors) {
 
