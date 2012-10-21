@@ -5,6 +5,13 @@ define(
     ],
     function($, utils) {
 
+        var smiles = {
+            ':)': 'http://findicons.com/files/icons/360/emoticons/16/smile_1.png',
+            ':(': 'http://findicons.com/files/icons/360/emoticons/16/cry.png',
+            ';)': 'http://findicons.com/files/icons/360/emoticons/16/smile_6.png',
+            ':D': 'http://findicons.com/files/icons/360/emoticons/16/smile_7.png'
+        };
+
         var widget = function($el) {
             var control = this;
 
@@ -73,7 +80,8 @@ define(
             },
             renderMessage: function(message) {
                 var control = this;
-                control.$body.append(_.template($('#messageTemplate').html(), message));
+
+                control.$body.append(_.template($('#messageTemplate').html(), control.decorateMessage(message)));
             },
             showErrors: function(errors) {
 
@@ -82,6 +90,15 @@ define(
                 utils.each(errors, function(error, field) {
                     control.$form.find('[name="' + field + '"]').closest('.chat__input').addClass('chat__input_invalid');
                 });
+            },
+            decorateMessage: function(message){
+                utils.each(smiles, function(img, smile){
+                    message.text = message.text.replace(smile, '<img src="' + img + '" />');
+                });
+
+                message.text = message.text.replace(message.username, '<i>' + message.username + '</i>');
+
+                return message;
             },
             _validateMessage: function(data) {
                 var deferred = new $.Deferred(),

@@ -44,3 +44,7 @@
     border-color: #d40000 !important;
     box-shadow: 0 0 3px #d40000 !important;
 }
+
+.chat__messageText img{
+    vertical-align: text-bottom;
+}
