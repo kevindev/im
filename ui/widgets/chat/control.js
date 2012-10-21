@@ -52,7 +52,7 @@ define(
                     case 'messages':
                         switch (data.action) {
                             case 'add':
-                                control.renderMessage(data.message);
+                                control.receiveMessage(data.message);
                                 break;
                         }
                         break;
@@ -62,6 +62,7 @@ define(
         };
 
         utils.extend(widget.prototype, {
+            usernames: [],
             sendMessage: function(message) {
                 var control = this;
 
@@ -77,6 +78,14 @@ define(
                     message: message
                 }), document.location.protocol + '//' + document.location.host);
 
+            },
+            receiveMessage: function(message){
+
+                if (utils.indexOf(this.usernames, message.username) == -1){
+                    this.usernames.push(message.username);
+                }
+
+                this.renderMessage(message);
             },
             renderMessage: function(message) {
                 var control = this;
@@ -96,7 +105,9 @@ define(
                     message.text = message.text.split(smile).join('<img src="' + img + '" />');
                 });
 
-                message.text = message.text.split(message.username).join('<i>' + message.username + '</i>');
+                utils.each(this.usernames, function(username){
+                    message.text = message.text.split(username).join('<i>' + username + '</i>');
+                });
 
                 return message;
             },
