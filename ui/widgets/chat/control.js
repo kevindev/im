@@ -93,10 +93,10 @@ define(
             },
             decorateMessage: function(message){
                 utils.each(smiles, function(img, smile){
-                    message.text = message.text.replace(smile, '<img src="' + img + '" />');
+                    message.text = message.text.split(smile).join('<img src="' + img + '" />');
                 });
 
-                message.text = message.text.replace(message.username, '<i>' + message.username + '</i>');
+                message.text = message.text.split(message.username).join('<i>' + message.username + '</i>');
 
                 return message;
             },
